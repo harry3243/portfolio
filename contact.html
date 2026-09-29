@@ -37,10 +37,10 @@
 
     <!-- ===== Content ===== -->
     <main class="container main">
-      <!-- Contact form: sends straight to your inbox (see js/main.js) -->
+      <!-- Contact form: sends messages to your inbox through Formspree -->
       <section class="section section--first">
         <h1>Send a message</h1>
-        <form class="form panel" id="contact-form" novalidate>
+        <form class="form panel" id="contact-form" action="https://formspree.io/f/xeaonrzj" method="POST" novalidate>
           <div class="form__row">
             <label class="field">Name
               <input type="text" name="name" autocomplete="name" required>
@@ -53,7 +53,7 @@
             <textarea name="message" rows="5" required></textarea>
           </label>
           <!-- Spam trap: real visitors never see or fill this -->
-          <input type="text" name="_honey" class="visually-hidden" tabindex="-1" autocomplete="off">
+          <input type="text" name="_gotcha" class="visually-hidden" tabindex="-1" autocomplete="off">
           <div class="form__actions">
             <button class="btn btn--primary" type="submit">Send message</button>
           </div>
@@ -68,13 +68,11 @@
 
         <ul class="social-row">
           <li>
-            <!-- TODO: replace # with your GitHub profile URL -->
             <a class="social-icon" href="https://github.com/harry3243" target="_blank" rel="noopener" aria-label="GitHub">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.09 3.29 9.4 7.86 10.93.58.1.79-.25.79-.56 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.34-1.28-1.7-1.28-1.7-1.04-.72.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.06 11.06 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.81 1.18 1.84 1.18 3.1 0 4.43-2.69 5.4-5.25 5.69.41.36.78 1.07.78 2.16 0 1.56-.01 2.82-.01 3.2 0 .31.2.67.8.56A10.99 10.99 0 0 0 23.5 12c0-6.27-5.23-11.5-11.5-11.5Z"/></svg>
             </a>
           </li>
           <li>
-            <!-- TODO: replace # with your LinkedIn profile URL -->
             <a class="social-icon" href="https://www.linkedin.com/in/harry-son-a4b3ab2b1/" target="_blank" rel="noopener" aria-label="LinkedIn">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM.5 8.98h4.96V23H.5V8.98Zm7.98 0h4.76v1.92h.07c.66-1.25 2.28-2.57 4.7-2.57 5.03 0 5.96 3.31 5.96 7.62V23h-4.96v-6.13c0-1.46-.03-3.34-2.03-3.34-2.04 0-2.35 1.6-2.35 3.24V23H8.48V8.98Z"/></svg>
             </a>
@@ -89,8 +87,8 @@
 
       <div class="grid grid--2">
         <div class="panel info-card">
-          <p class="eyebrow">Alt-Email</p>
-          <a class="info-card__value info-card__value--link" href="mailto:jonieeerake@gmail.com?subject=Opportunity%20for%20Harryson">jonieeerake@gmail.com</a>
+          <p class="eyebrow">Email</p>
+          <a class="info-card__value info-card__value--link" href="mailto:jonieedrake@gmail.com?subject=Opportunity%20for%20Harryson">jonieedrake@gmail.com</a>
           <p class="muted">Open to internships and full-time roles</p>
         </div>
         <div class="panel info-card">
@@ -111,6 +109,44 @@
     </footer>
 
   </div>
+
+  <!-- Contact form handler (must come before main.js) -->
+  <script>
+    (function () {
+      var form = document.getElementById('contact-form');
+      var statusEl = document.getElementById('form-status');
+      if (!form) return;
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        e.stopImmediatePropagation(); // blocks any old handler in main.js
+
+        if (!form.checkValidity()) {
+          statusEl.textContent = 'Please fill in all fields with a valid email.';
+          return;
+        }
+
+        statusEl.textContent = 'Sending...';
+
+        fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        })
+          .then(function (res) {
+            if (res.ok) {
+              statusEl.textContent = 'Thanks! Your message was sent.';
+              form.reset();
+            } else {
+              statusEl.textContent = 'Something went wrong. Please email me directly.';
+            }
+          })
+          .catch(function () {
+            statusEl.textContent = 'Network error. Please try again.';
+          });
+      });
+    })();
+  </script>
   <script src="js/main.js"></script>
 </body>
 </html>
