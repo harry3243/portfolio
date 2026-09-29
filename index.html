@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Harryson — Full-Stack Developer</title>
+  <meta name="author" content="Harryson">
+  <meta name="description" content="Portfolio of Harryson, an MCA student and full-stack developer in Bengaluru building fast interfaces and reliable backend services.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Harryson — Full-Stack Developer">
+  <meta property="og:description" content="Portfolio of Harryson, an MCA student and full-stack developer in Bengaluru building fast interfaces and reliable backend services.">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="page">
+
+    <!-- ===== Header ===== -->
+    <header class="site-header">
+      <div class="container site-header__inner">
+        <a class="brand" href="index.html">
+          <span class="brand__name">Harryson</span>
+          <span class="eyebrow brand__role brand__role--accent">A Techie</span>
+        </a>
+        <nav class="nav" aria-label="Main">
+          <a href="index.html" aria-current="page">Profile</a>
+          <a href="projects.html">Work</a>
+          <a href="experience.html">Experience</a>
+          <a href="education.html">Education</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ===== Content ===== -->
+    <main class="container main">
+
+    <!-- Hero -->
+    <div class="hero">
+      <section class="hero__text">
+        <p class="eyebrow">Open to internships and full-time roles</p>
+        <h1 class="hero__title">Harryson<span class="hero__swap"><span class="hero__swap-item hero__swap-item--a" aria-hidden="true">Full-Stack Developer</span><span class="hero__swap-item hero__swap-item--b">A Problem Solver</span></span></h1>
+        <p class="hero__lead">I am an MCA student building a strong foundation in full-stack web development. Most of my time is spent learning by doing &mdash; working through practical projects, understanding how frontends connect to backend services, and learning how to build clean databases. I focus on understanding core concepts rather than taking shortcuts, and I value clear code, best practices and picking up new technologies step by step.</p>
+        <div class="btn-row">
+          <a class="btn btn--primary" href="projects.html">View Projects</a>
+          <a class="btn btn--outline" href="contact.html">Get in touch</a>
+        </div>
+      </section>
+      <figure class="panel hero__photo">
+        <img src="images/photo.jpeg" alt="Harryson &mdash; Full-Stack Developer">
+      </figure>
+    </div>
+
+    <!-- Stats -->
+    <section class="stats">
+      <div class="stat"><p class="stat__value">2</p><p class="stat__label">Shipped projects</p></div>
+      <div class="stat"><p class="stat__value">7+</p><p class="stat__label">Technologies</p></div>
+      <div class="stat"><p class="stat__value">4</p><p class="stat__label">Certifications</p></div>
+      <div class="stat"><p class="stat__value">2</p><p class="stat__label">Hackathons</p></div>
+    </section>
+
+    <!-- About -->
+    <section class="section about">
+      <div class="about__side">
+        <h2>About</h2>
+        <ul class="about__facts">
+          <li><span>Studying</span>MCA &middot; St. Claret College</li>
+          <li><span>Focus</span>Web techonolgy<p>Cyber Security</p><p>Computer Hardwares</p></li>
+        </ul>
+      </div>
+      <div class="about__text">
+        <p>I am a Master of Computer Applications student specialising in full-stack development. Most of my time goes into learning technologies, making interfaces that feel, solving real world problems with tech.</p>
+        <p>I care about clean architecture, readable code and honest performance numbers. I test what I build, document decisions, and prefer simple solutions that a team can maintain over clever ones that only I understand.</p>
+        <p>and additionally intrested in Cloud, Cyber security along with Computer networks & hardware.</p>
+        <ul class="tags tags--pill"><li class="tag tag--pill">Detail-oriented</li><li class="tag tag--pill">Self-driven</li><li class="tag tag--pill">Collaborative</li><li class="tag tag--pill">Continuous learner</li></ul>
+      </div>
+    </section>
+
+    <!-- Technical stack -->
+    <section class="section">
+      <h2>Technical stack</h2>
+      <div class="grid grid--2">
+        <div class="panel stack-card">
+          <div class="stack-card__head"><h3>Frontend</h3><span>Interfaces that stay fast and readable</span></div>
+          <ul class="tags"><li class="tag">JavaScript</li><li class="tag">HTML5</li><li class="tag">CSS3</li><li class="tag">Responsive UI</li></ul>
+        </div>
+        <div class="panel stack-card">
+          <div class="stack-card__head"><h3>Backend</h3><span>Services, logic and data flow</span></div>
+          <ul class="tags"><li class="tag">Python</li><li class="tag">Java</li><li class="tag">OpenCV</li></ul>
+        </div>
+        <div class="panel stack-card">
+          <div class="stack-card__head"><h3>Data</h3><span>Modelling and querying</span></div>
+          <ul class="tags"><li class="tag">MySQL</li><li class="tag">MongoDB</li><li class="tag">Schema design</li></ul>
+        </div>
+        <div class="panel stack-card">
+          <div class="stack-card__head"><h3>Workflow</h3><span>How the work gets shipped</span></div>
+          <ul class="tags"><li class="tag">Git</li><li class="tag">GitHub</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="section">
+      <h2>Gallery</h2>
+      <div class="gallery">
+
+        <!-- Projects card: tapping anywhere on it opens the Work page -->
+        <a class="panel gallery__item gallery__item--wide gallery__link" href="hackathons.html" aria-label="Go to my projects">
+          <img src="images/hackathons1.png" alt="Laptop with code open on a late-night desk setup" width="1280" height="896" loading="lazy">
+          <span class="gallery__caption">Hackathons &amp; focused build sessions <span class="gallery__arrow" aria-hidden="true">&rarr;</span></span>
+        </a>
+
+        <!-- Hackathons card: opens the Hackathons page -->
+        <a class="panel gallery__item gallery__link" href="projects.html" aria-label="Go to my hackathons">
+          <img src="images/aitexttovideooutput1.png" alt="Team collaborating on laptops at a hackathon" width="1024" height="1024" loading="lazy">
+          <span class="gallery__caption">Projects <span class="gallery__arrow" aria-hidden="true">&rarr;</span></span>
+        </a>
+
+
+        <div class="panel gallery__cta">
+          <div class="gallery__cta-text">
+            <p class="eyebrow">Resume</p>
+            <h3>Education, experience, skills &amp; projects on one page</h3>
+            <a class="btn btn--primary" href="assets/HARRYSON_CHRISTOPHER_CV.pdf" download>Download resume (PDF)</a>
+          </div>
+          <div class="cv-sheet" aria-hidden="true">
+            <span class="cv-sheet__dot"></span>
+            <span class="cv-sheet__line cv-sheet__line--title"></span>
+            <span class="cv-sheet__line"></span>
+            <span class="cv-sheet__line cv-sheet__line--short"></span>
+            <span class="cv-sheet__line"></span>
+            <span class="cv-sheet__line cv-sheet__line--short"></span>
+            <span class="cv-sheet__tag">PDF</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    </main>
+
+    <!-- ===== Footer ===== -->
+    <footer class="site-footer">
+      <div class="container site-footer__inner">
+        <p>&copy; <span data-year>2026</span> Harryson &middot; Bengaluru, India</p>
+        <a class="mono" href="mailto:jonieedrake@gmail.com">jonieedrake@gmail.com</a>
+      </div>
+    </footer>
+
+  </div>
+  <script src="js/main.js"></script>
+</body>
+</html>
