@@ -14,6 +14,40 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Two-column project body: text left, minimal tech visual right */
+    .project__body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 340px); gap: 40px; align-items: start; }
+    @media (max-width: 860px) { .project__body { grid-template-columns: 1fr; gap: 24px; } }
+
+    .viz { --v-bg: #080b11; --v-line: #1f2635; --v-text: #8fa3c4; --v-dim: #55627d; --v-accent: #3b82f6; --v-ok: #34d399;
+      background: var(--v-bg); border: 1px solid var(--v-line); border-radius: 12px; overflow: hidden;
+      font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 12.5px; line-height: 1.7; color: var(--v-text); }
+    .viz__bar { display: flex; align-items: center; gap: 6px; padding: 9px 12px; border-bottom: 1px solid var(--v-line); }
+    .viz__bar i { width: 8px; height: 8px; border-radius: 50%; background: var(--v-line); display: block; }
+    .viz__bar span { margin-left: 8px; color: var(--v-dim); font-size: 11.5px; }
+    .viz__body { padding: 14px 16px; }
+    .viz .ok { color: var(--v-ok); }
+    .viz .acc { color: var(--v-accent); }
+    .viz .dim { color: var(--v-dim); }
+
+    /* Project 1: terminal + film strip */
+    .cursor { display: inline-block; width: 7px; height: 14px; background: var(--v-accent); vertical-align: -2px; animation: blink 1.1s steps(1) infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+    .bar { letter-spacing: 1px; }
+    .strip { display: grid; grid-template-columns: repeat(8, 1fr); gap: 4px; padding: 0 16px 16px; }
+    .strip i { aspect-ratio: 1 / 1.2; border-radius: 3px; border: 1px solid var(--v-line); background: linear-gradient(160deg, rgba(59,130,246,.35), rgba(59,130,246,.04)); }
+    .strip i:nth-child(2n) { opacity: .75; } .strip i:nth-child(3n) { opacity: .55; } .strip i:nth-child(4n) { opacity: .4; }
+
+    /* Project 2: pipeline + access matrix */
+    .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; margin-bottom: 14px; font-size: 12px; }
+    .flow b { font-weight: 500; padding: 2px 6px; border: 1px solid var(--v-line); border-radius: 999px; }
+    .flow b.on { color: var(--v-accent); border-color: var(--v-accent); }
+    .flow em { font-style: normal; color: var(--v-dim); }
+    .matrix { width: 100%; border-collapse: collapse; }
+    .matrix th, .matrix td { text-align: center; padding: 4px 6px; border-top: 1px solid var(--v-line); font-weight: 400; }
+    .matrix th:first-child, .matrix td:first-child { text-align: left; }
+    .matrix thead th { color: var(--v-dim); border-top: 0; font-size: 11px; }
+  </style>
 </head>
 <body>
   <div class="page">
@@ -43,33 +77,72 @@
       </div>
 
       <div class="project-list">
+
+        <!-- ===== Project 01 ===== -->
         <article class="project">
           <div class="project__head">
             <span class="project__num">01</span>
             <h2>AI Text to Video Generator</h2>
           </div>
-          <p class="project__lead">An AI-powered text-to-video synthesis system that converts natural language descriptions into dynamic, high-quality video sequences in real time.</p>
+          <div class="project__body">
+            <div class="project__text">
+              <p class="project__lead">An AI-powered text-to-video synthesis system that converts natural language descriptions into dynamic, high-quality video sequences in real time.</p>
+              <p class="project__detail">Built the core generation pipeline with Python, PyTorch, and AnimateDiff-Lightning via Hugging Face Diffusers for fast GPU video rendering, integrated motion LoRA adapters and CLIP safety validation, then wrapped the model in a Gradio web interface.</p>
+              <ul class="tags"><li class="tag">Python</li><li class="tag">PyTorch</li><li class="tag">Diffusers</li><li class="tag">Gradio</li></ul>
+              <p style="margin-top:16px;">
+                <a class="btn btn--primary" href="https://github.com/harry3243/ai-text-to-video" target="_blank" rel="noopener">View on GitHub</a>
+                <!-- When you have a live demo link, add another button here:
+                <a class="btn" href="YOUR-LIVE-LINK" target="_blank" rel="noopener">Try live demo</a> -->
+              </p>
+            </div>
 
-          <!-- Screenshot: click it to open the GitHub repo -->
-          <a href="https://github.com/harry3243/ai-text-to-video" target="_blank" rel="noopener">
-            <img src="images/aitexttovideooutput1.png" alt="AI Text-to-Video Generator web interface built with Gradio" loading="lazy" style="display:block; max-width:100%; height:auto; border-radius:12px; margin:16px 0;">
-          </a>
-
-          <p class="project__detail">Built the core generation pipeline with Python, PyTorch, and AnimateDiff-Lightning via Hugging Face Diffusers for fast GPU video rendering, integrated motion LoRA adapters and CLIP safety validation, then wrapped the model in a Gradio web interface.</p>
-          <ul class="tags"><li class="tag">Python</li><li class="tag">PyTorch</li><li class="tag">Diffusers</li><li class="tag">Gradio</li></ul>
-          <p style="margin-top:16px;">
-            <a class="btn btn--primary" href="https://github.com/harry3243/ai-text-to-video" target="_blank" rel="noopener">View on GitHub</a>
-          </p>
+            <div class="viz" aria-hidden="true">
+              <div class="viz__bar"><i></i><i></i><i></i><span>text2video.py</span></div>
+              <div class="viz__body">
+                <div><span class="acc">$</span> prompt <span class="dim">"a cat surfing a wave"</span></div>
+                <div><span class="dim">›</span> load animatediff-lightning <span class="ok">✓</span></div>
+                <div><span class="dim">›</span> motion=zoom-in &nbsp;steps=4</div>
+                <div><span class="dim">›</span> denoise <span class="acc bar">▰▰▰▰▰▰▰▱</span> 88%</div>
+                <div><span class="dim">›</span> clip safety check <span class="ok">✓</span></div>
+                <div><span class="dim">›</span> export out.mp4 <span class="ok">✓</span> <span class="cursor"></span></div>
+              </div>
+              <div class="strip"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            </div>
+          </div>
         </article>
+
+        <!-- ===== Project 02 ===== -->
         <article class="project">
           <div class="project__head">
             <span class="project__num">02</span>
             <h2>Recruitment Management System</h2>
           </div>
-          <p class="project__lead">A web platform for managing the recruitment process, with user authentication, profile management and role-based access.</p>
-          <p class="project__detail">Role-based access, task assignment and status tracking, backed by a relational schema designed for auditable records.</p>
-          <ul class="tags"><li class="tag">HTML</li><li class="tag">CSS</li><li class="tag">JavaScript</li><li class="tag">MySQL</li></ul>
+          <div class="project__body">
+            <div class="project__text">
+              <p class="project__lead">A web platform for managing the recruitment process, with user authentication, profile management and role-based access.</p>
+              <p class="project__detail">Role-based access, task assignment and status tracking, backed by a relational schema designed for auditable records.</p>
+              <ul class="tags"><li class="tag">HTML</li><li class="tag">CSS</li><li class="tag">JavaScript</li><li class="tag">MySQL</li></ul>
+            </div>
+
+            <div class="viz" aria-hidden="true">
+              <div class="viz__bar"><i></i><i></i><i></i><span>recruitment.sql</span></div>
+              <div class="viz__body">
+                <div class="flow">
+                  <b>applied</b><em>→</em><b>screen</b><em>→</em><b class="on">interview</b><em>→</em><b>offer</b>
+                </div>
+                <table class="matrix">
+                  <thead><tr><th>role</th><th>view</th><th>edit</th><th>assign</th></tr></thead>
+                  <tbody>
+                    <tr><td>admin</td><td class="ok">✓</td><td class="ok">✓</td><td class="ok">✓</td></tr>
+                    <tr><td>recruiter</td><td class="ok">✓</td><td class="ok">✓</td><td class="dim">–</td></tr>
+                    <tr><td>candidate</td><td class="ok">✓</td><td class="dim">–</td><td class="dim">–</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </article>
+
       </div>
     </main>
 

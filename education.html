@@ -14,6 +14,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Institution logo tile on the left of each degree card */
+    .degree.has-logo { display: flex; align-items: center; gap: 16px; }
+    .degree__logo { position: relative; flex: 0 0 60px; width: 60px; height: 60px; border-radius: 10px;
+      overflow: hidden; border: 1px solid rgba(255, 255, 255, .08); background: #0f141d;
+      display: flex; align-items: center; justify-content: center; }
+    /* Initials show behind the image; they remain visible if the image fails to load */
+    .degree__logo::before { content: attr(data-initials); position: absolute;
+      font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 14px; color: #8fa3c4; }
+    .degree__logo img { position: relative; width: 100%; height: 100%; object-fit: contain; display: block; }
+    .degree__text { min-width: 0; }
+  </style>
 </head>
 <body>
   <div class="page">
@@ -45,30 +57,47 @@
 
       <section class="section section--first">
         <div class="grid grid--2">
-        <div class="panel degree">
-          <span class="mono muted">2025 — present</span>
-          <h3>Master of Computer Applications</h3>
-          <p class="degree__school">St. Claret College (Autonomous)</p>
-          <p class="muted">CGPA 8.1 / 10 · Full-stack specialisation</p>
+
+        <div class="panel degree has-logo">
+          <span class="degree__logo" data-initials="SC"><img src="images/logos/st-claret.png" alt="St. Claret College logo" onerror="this.remove()"></span>
+          <div class="degree__text">
+            <span class="mono muted">2025 — present</span>
+            <h3>Master of Computer Applications</h3>
+            <p class="degree__school">St. Claret College (Autonomous)</p>
+            <p class="muted">CGPA 8.1 / 10 · Full-stack specialisation</p>
+          </div>
         </div>
-        <div class="panel degree">
-          <span class="mono muted">2021 — 2024</span>
-          <h3>Bachelor of Computer Applications</h3>
-          <p class="degree__school">Aditya Institute of Management Research &amp; Studies</p>
-          <p class="muted">76% · Cyber security electives</p>
+
+        <div class="panel degree has-logo">
+          <span class="degree__logo" data-initials="AI"><img src="images/logos/aditya.png" alt="Aditya Institute logo" onerror="this.remove()"></span>
+          <div class="degree__text">
+            <span class="mono muted">2021 — 2024</span>
+            <h3>Bachelor of Computer Applications</h3>
+            <p class="degree__school">Aditya Institute of Management Research &amp; Studies</p>
+            <p class="muted">76% · Cyber security electives</p>
+          </div>
         </div>
-        <div class="panel degree">
-          <span class="mono muted">2019 — 2021</span>
-          <h3>Pre-University (PCMC)</h3>
-          <p class="degree__school">Vincent Pallotti College</p>
-          <p class="muted">CGPA 6.1 / 10</p>
+
+        <div class="panel degree has-logo">
+          <span class="degree__logo" data-initials="VP"><img src="images/logos/vincent-pallotti.png" alt="Vincent Pallotti College logo" onerror="this.remove()"></span>
+          <div class="degree__text">
+            <span class="mono muted">2019 — 2021</span>
+            <h3>Pre-University (PCMC)</h3>
+            <p class="degree__school">Vincent Pallotti College</p>
+            <p class="muted">CGPA 6.1 / 10</p>
+          </div>
         </div>
-        <div class="panel degree">
-          <span class="mono muted">Completed 2019</span>
-          <h3>Schooling</h3>
-          <p class="degree__school">Sri Shardha Vidyanikethan English High School</p>
-          <p class="muted">67%</p>
+
+        <div class="panel degree has-logo">
+          <span class="degree__logo" data-initials="SS"><img src="images/logos/sri-shardha.png" alt="Sri Shardha Vidyanikethan logo" onerror="this.remove()"></span>
+          <div class="degree__text">
+            <span class="mono muted">Completed 2019</span>
+            <h3>Schooling</h3>
+            <p class="degree__school">Sri Shardha Vidyanikethan English High School</p>
+            <p class="muted">67%</p>
+          </div>
         </div>
+
         </div>
       </section>
 
